@@ -1,6 +1,24 @@
 ---
+- name: Add yarn key
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+  become: yes
+
+- name: Add yarn repository
+  apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+    update_cache: yes
+  become: yes
+
+- name: Install yarn
+  apt:
+    name: yarn
+    install_recommends: no
+  become: yes
+
 - name: Create deploy dir
   file: path={{ deploy_dir }}{{ deploy_app_name }} state=directory owner={{ deploy_user }} group={{ deploy_user }}
+
 
 - name: Create shared directories
   file:
@@ -18,6 +36,12 @@
 
 - name: Copy puma.rb
   template: src=puma.rb dest={{ deploy_dir }}{{ deploy_app_name }}/shared/puma.rb owner={{ deploy_user }} group={{ deploy_user }}
+
+#- name: Ensure app SystemD service present for Puma
+#  template:
+#    src: templates/service.ini.j2
+#    dest: "/etc/systemd/system/{{ app_puma_service_name }}.service"
+#  register: service_file
 
 - name: Restart Nginx
   service: name=nginx state=restarted enabled=yes

@@ -14,6 +14,9 @@
 - name: Install Bundler
   command: /opt/rubies/ruby-{{ ruby_version }}/bin/gem install bundler
 
+- name: Install rails
+  command: /opt/rubies/ruby-{{ ruby_version }}/bin/gem install rails
+
 - name: Add chruby.sh to .bashrc
   lineinfile:
     path: /home/deploy/.bashrc

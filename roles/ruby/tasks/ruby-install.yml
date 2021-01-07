@@ -1,4 +1,22 @@
 ---
+- name: Install Ruby dependencies
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - gcc
+    - autoconf
+    - bison
+    - build-essential
+    - libssl-dev
+    - libyaml-dev
+    - libreadline6-dev
+    - zlib1g-dev
+    - libncurses5-dev
+    - libffi-dev
+    - libgdbm-dev
+    - sqlite3
+    - libsqlite3-dev
+    - nodejs
 - name: Download and unpack ruby-install
   unarchive:
     src: "https://github.com/postmodern/ruby-install/archive/v{{ ruby_install_version }}.tar.gz"

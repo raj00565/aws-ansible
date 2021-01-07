@@ -19,3 +19,6 @@
 #    - libcurl3-gnutls
     - libcurl4-openssl-dev
     - nodejs
+    - yarn
+    - base
+    - git
