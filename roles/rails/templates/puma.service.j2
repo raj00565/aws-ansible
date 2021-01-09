@@ -11,7 +11,7 @@ After=network.target
 # as of Puma 5.1 or later.
 # On earlier versions of Puma or JRuby, change this to `Type=simple` and remove
 # the `WatchdogSec` line.
-Type=notify
+Type=simple
 
 # If your Puma process locks up, systemd's watchdog will restart it within seconds.
 WatchdogSec=10
@@ -32,7 +32,7 @@ WorkingDirectory={{deploy_dir}}{{deploy_app_name}}
 # an absolute URL to puma. For example /usr/local/bin/puma
 # Alternatively, create a binstub with `bundle binstubs puma --path ./sbin` in the WorkingDirectory
 #ExecStart=/<FULLPATH>/bin/puma -C <YOUR_APP_PATH>/puma.rb
-ExecStart=/bin/bash -lc '{{ deploy_dir }}.gem/ruby/{{ruby_version }}/bin/bundle exec --keep-file-descriptors puma -e {{ app_env }} -C {{ deploy_dir }}{{ deploy_app_name }}/shared/puma.rb'
+ExecStart=/bin/bash -lc '/opt/rubies/ruby-{{ruby_version }}/bin/bundle exec --keep-file-descriptors puma -e {{ app_env }} -C {{ deploy_dir }}{{ deploy_app_name }}/shared/puma.rb'
 #ExecStop= {{ deploy_dir }}.gem/ruby/{{ruby_version }}/bin/bundle exec puma -e production -S {{ deploy_dir }}{{ deploy_app_name }}/shared/puma.rb
 PIDFile={{deploy_dir}}{{deploy_app_name}}/puma.pid
 
