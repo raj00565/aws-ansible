@@ -31,7 +31,7 @@ Environment=MALLOC_ARENA_MAX=2
 # SystemD will not run puma even if it is in your path. You must specify
 # an absolute URL to puma. For example /usr/local/bin/puma
 # Alternatively, create a binstub with `bundle binstubs puma --path ./sbin` in the WorkingDirectory
-ExecStart=/bin/bash -lc '{{ deploy_dir }}.gem/ruby/{{ruby_version }}/bin/bundle exec --keep-file-descriptors sidekiq -e {{ app_env }} -C {{ deploy_dir }}{{ deploy_app_name }}/shared/config/sidekiq.yml'
+ExecStart=/bin/bash -lc '/opt/rubies/ruby-{{ruby_version }}/bin/bundle exec --keep-file-descriptors sidekiq -e {{ app_env }} -C {{ deploy_dir }}{{ deploy_app_name }}/shared/config/sidekiq.yml'
 #ExecStop= {{ deploy_dir }}.gem/ruby/{{ruby_version }}/bin/bundle exec puma -e production -S {{ deploy_dir }}{{ deploy_app_name }}/shared/puma.rb
 PIDFile={{deploy_dir}}{{deploy_app_name}}/puma.pid
 
