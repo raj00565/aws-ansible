@@ -2,11 +2,11 @@
 - name: Download chruby
   unarchive:
     src: "https://github.com/postmodern/chruby/archive/v{{ chruby_version }}.tar.gz"
-    dest: /home/deploy/
+    dest: "{{ deploy_dir }}"
     remote_src: yes
 
 - name: Install chruby
-  make: chdir=/home/deploy/chruby-{{ chruby_version }} target=install
+  make: chdir="{{ deploy_dir }}/chruby-{{ chruby_version }}" target=install
 
 - name: Copy chruby.sh
   copy: src=chruby.sh dest=/etc/profile.d/chruby.sh owner=root group=root
@@ -17,12 +17,15 @@
 - name: Install rails
   command: /opt/rubies/ruby-{{ ruby_version }}/bin/gem install rails
 
+- name: Install sidekiq
+  command: /opt/rubies/ruby-{{ ruby_version }}/bin/gem install sidekiq
+
 - name: Add chruby.sh to .bashrc
   lineinfile:
-    path: /home/deploy/.bashrc
+    path: "{{ deploy_dir }}/.bashrc"
     line: 'source /etc/profile.d/chruby.sh'
 
 - name: Add chruby {{ ruby_version }} to .bashrc
   lineinfile:
-    path: /home/deploy/.bashrc
+    path: "{{ deploy_dir }}/.bashrc"
     line: 'chruby ruby-{{ ruby_version }}'

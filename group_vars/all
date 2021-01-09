@@ -1,4 +1,5 @@
 ---
+app_env: production 
 # Server Timzone + Locale
 timezone: Europe/Berlin
 locale: en_US.UTF-8
@@ -10,7 +11,7 @@ swap_file_path: /swapfile
 swap_file_size_kb: 1024
 
 # General settings
-deploy_dir: /home/deploy/
+deploy_dir: /home/cryo/
 deploy_user: cryo
 deploy_password: SET_PASSWORD_HERE
 deploy_app_name: SET_APP_NAME_HERE
@@ -23,6 +24,10 @@ shared_dirs:
   - shared/log
   - shared/public
   - shared/tmp
+  - shared/tmp/sockets
+  - shared/tmp/pids
+
+app_puma_service_name: puma
 
 # Nginx
 nginx_https_enabled: true
@@ -57,3 +62,12 @@ elasticsearch_version: 2.3.1
 
 # Monit
 monit_sidekiq_enabled: true
+
+#Sidekiq
+sidekiq_service_file:  "sidekiq.service.j2"
+app_sidekiq_service_name: "sidekiq"
+#cloudwatch
+cloudwatch_deb_url: "https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb"
+aws_key: WSDWREFDSGFDGTREBVDF
+aws_secret: WEEF#FDVD#$34
+aws_region: us-west-1

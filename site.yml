@@ -12,14 +12,15 @@
       raw: apt-get update -qq
   roles:
 #    - common
-#    - deploy-user
+    - deploy-user
 #    - mysql
-    - nginx
+#    - nginx
 #    - certbot
 #    - ruby
-#    - rails
-#    - monit
+    - rails
+    - monit
 #    - memcached
 #    - redis
 #    - elasticsearch
-     
+    - cloudwatch       
+    - sidekiq

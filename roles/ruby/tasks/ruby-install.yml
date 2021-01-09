@@ -20,11 +20,11 @@
 - name: Download and unpack ruby-install
   unarchive:
     src: "https://github.com/postmodern/ruby-install/archive/v{{ ruby_install_version }}.tar.gz"
-    dest: /home/deploy/
+    dest: "{{ deploy_dir }}"
     remote_src: yes
 
 - name: Install ruby-install
-  make: chdir=/home/deploy/ruby-install-{{ ruby_install_version }} target=install
+  make: chdir="{{ deploy_dir }}/ruby-install-{{ ruby_install_version }}" target=install
 
 - name: Create rubies directory
   file: path=/opt/rubies/ state=directory mode=0755 owner=root group=root
