@@ -12,9 +12,9 @@
     enabled: True
     daemon_reload: yes
 
-- name: Restart sidekiq
-  systemd:
-    name: "{{ app_sidekiq_service_name }}"
-    state: started
+#- name: Restart sidekiq
+#  systemd:
+#    name: "{{ app_sidekiq_service_name }}"
+#    state: started
 
 
