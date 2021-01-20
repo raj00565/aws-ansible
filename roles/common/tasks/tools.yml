@@ -1,5 +1,6 @@
 - name: Install Tools
   apt: name={{ item }} state=latest update_cache=true
+  become: yes
   with_items:
     - build-essential
     - tmux
@@ -22,3 +23,4 @@
     - yarn
     - base
     - git
+    - libpq-dev

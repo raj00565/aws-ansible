@@ -3,7 +3,8 @@
   setup:
 
 - name: Perform Safe Upgrade
-  apt: upgrade=safe update_cache=yes
+  apt: upgrade=safe update_cache=yes  
+  become: yes
 
 #- import_tasks: hostname.yml
 - import_tasks: swap.yml

@@ -44,8 +44,8 @@ ssh_public_key_files:
   - /Users/raj/.ssh/id_rsa.pub
 
 # MySQL
-#mysql_root_db_password: SET_PASSWORD_HERE
-#mysql_app_db_password: SET_PASSWORD_HERE
+mysql_root_db_password: SET_PASSWORD_HERE
+mysql_app_db_password: SET_PASSWORD_HERE
 
 # Ruby
 ruby_install_version: 0.8.1
