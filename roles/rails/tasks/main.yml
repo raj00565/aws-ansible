@@ -55,10 +55,10 @@
     enabled: True
     daemon_reload: yes
 
-- name: Restart puma
-  systemd:
-    name: "{{ app_puma_service_name }}"
-    state: started    
+#- name: Restart puma
+#  systemd:
+#    name: "{{ app_puma_service_name }}"
+#    state: started    
 
 - name: Restart Nginx
   service: name=nginx state=restarted enabled=yes
