@@ -19,8 +19,15 @@
 #    - libcurl3
 #    - libcurl3-gnutls
     - libcurl4-openssl-dev
-    - nodejs
+    #- nodejs
     - yarn
     - base
     - git
     - libpq-dev
+    - cmake
+#    - gmake
+    - pkg-config
+    - gcc 
+    - g++ 
+    - make
+    - curl

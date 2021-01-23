@@ -2,10 +2,10 @@
 - name: Install Rails Server
   hosts: Dev
   # After initial provisioning, use deploy instead of root
-  remote_user: ubuntu
+#  remote_user: cryo
   # remote_user: deploy
   become: yes
-  # become_method: sudo
+  become_method: sudo
   gather_facts: no # don't gather facts because /usr/bin/python isn't set
   pre_tasks:
     - name: apt-get update
@@ -16,10 +16,15 @@
     - mysql
     - nginx
 #    - certbot
+    - role: ansible-role-nodejs
+      nvm:
+       user: cryo
+       version: v0.33.11
+       node_version: '12.13.1'
     - ruby
     - rails
     - monit
-#    - memcached
+    - memcached
     - redis
 #    - elasticsearch
 #    - cloudwatch       

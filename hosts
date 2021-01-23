@@ -1,5 +1,5 @@
 [Dev]
-server1 ansible_host=18.157.164.142 ansible_user=ubuntu
+server1 ansible_host=18.193.115.133 ansible_user=ubuntu
 
 [Prod]
 host11.prod.example.com

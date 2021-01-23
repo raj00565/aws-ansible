@@ -19,6 +19,10 @@
 
 - name: Automated security updates
   apt: name=unattended-upgrades state=present
+  become: true
+#  become_user: root
 
 - name: Fail2ban
   apt: name=fail2ban state=present
+  become: true
+#  become_user: root

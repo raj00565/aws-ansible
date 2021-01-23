@@ -29,3 +29,5 @@
   lineinfile:
     path: "{{ deploy_dir }}/.bashrc"
     line: 'chruby ruby-{{ ruby_version }}'
+
+
