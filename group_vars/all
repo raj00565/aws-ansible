@@ -77,7 +77,7 @@ nodejs_package_json_path: ""
 # Ruby
 ruby_install_version: 0.8.1
 chruby_version: 0.3.9
-ruby_version: 2.5.1
+ruby_version: 2.7.2
 
 # Rails
 rails_secret_key_base: SET_RAILS_SECRET_KEY_BASE_HERE
