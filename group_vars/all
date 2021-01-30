@@ -99,3 +99,69 @@ cloudwatch_deb_url: "https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd6
 aws_key: WSDWREFDSGFDGTREBVDF
 aws_secret: WEEF#FDVD#$34
 aws_region: us-west-1
+
+
+##rbenv Variables 
+
+rbenv:
+  env: user ## system or user
+  version: v1.0.0
+  default_ruby: 2.6.6
+  rubies:
+    - version: 2.6.6
+    - version: 2.4.2
+      env:
+          RUBY_CONFIGURE_OPTS: "--enable-shared"
+rbenv_clean_up: false
+
+rbenv_repo: "https://github.com/rbenv/rbenv.git"
+
+rbenv_plugins:
+  - { name: "rbenv-vars",
+      repo: "https://github.com/rbenv/rbenv-vars.git",
+      version: "master" }
+
+  - { name: "ruby-build",
+      repo: "https://github.com/rbenv/ruby-build.git",
+      version: "master" }
+
+  - { name: "rbenv-default-gems",
+      repo: "https://github.com/rbenv/rbenv-default-gems.git",
+      version: "master" }
+
+  - { name: "rbenv-installer",
+      repo: "https://github.com/rbenv/rbenv-installer.git",
+      version: "master" }
+
+  - { name: "rbenv-update",
+      repo: "https://github.com/rkh/rbenv-update.git",
+      version: "master" }
+
+  - { name: "rbenv-whatis",
+      repo: "https://github.com/rkh/rbenv-whatis.git",
+      version: "master" }
+
+  - { name: "rbenv-use",
+      repo: "https://github.com/rkh/rbenv-use.git",
+      version: "master" }
+
+rbenv_root: "{% if rbenv.env == 'system' %}/usr/local/rbenv{% else %}$HOME/.rbenv{% endif %}"
+
+rbenv_users: 
+  - cryo
+rbenv_extra_depends: []
+#  - libjemalloc-dev
+rbenv_owner: 'cryo'
+rbenv_group: 'cryo'
+
+rbenv_apt_packages:
+  - build-essential
+  - curl
+  - git
+  - libcurl4-openssl-dev
+  - libffi-dev
+  - libreadline-dev
+  - libssl-dev
+  - libxml2-dev
+  - libxslt1-dev
+  - zlib1g-dev

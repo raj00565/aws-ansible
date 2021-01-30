@@ -6,22 +6,24 @@
   # remote_user: deploy
   become: yes
   become_method: sudo
-  gather_facts: no # don't gather facts because /usr/bin/python isn't set
+  gather_facts: yes # don't gather facts because /usr/bin/python isn't set
   pre_tasks:
     - name: apt-get update
       raw: sudo apt-get update -qq
   roles:
-    - common
-    - deploy-user
-    - mysql
-    - nginx
+#    - common
+#    - deploy-user
+#    - mysql
+#    - nginx
 #    - certbot
+    - rbenv
     - role: ansible-role-nodejs
       nvm:
        user: cryo
        version: v0.33.11
        node_version: '12.13.1'
-    - ruby
+#    - ansible-rbenv-role
+   # - ruby
     - rails
     - monit
     - memcached
