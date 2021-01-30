@@ -1,5 +1,6 @@
 ---
 app_env: production 
+RAILS_MASTER_KEYS:
 # Server Timzone + Locale
 timezone: Europe/Berlin
 locale: en_US.UTF-8
