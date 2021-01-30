@@ -1,0 +1,6 @@
+---
+
+- name: Copy systemd service file to server
+  template: src=puma_config dest=/etc/systemd/system owner=root group=root
+  notify: restart puma
+

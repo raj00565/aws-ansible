@@ -16,35 +16,28 @@ Type=simple
 
 # Preferably configure a non-privileged user
 # User=
-User={{ deploy_user }}
+User=cryo
 
 # The path to the your application code root directory.
 # Also replace the "<YOUR_APP_PATH>" place holders below with this path.
 # Example /home/username/myapp
 #WorkingDirectory=<YOUR_APP_PATH>
-WorkingDirectory={{deploy_dir}}{{deploy_app_name}}
+WorkingDirectory=/home/cryo/current
 # Helpful for debugging socket activation, etc.
 # Environment=PUMA_DEBUG=1
-Environment=RAILS_MASTER_KEY={{ RAILS_MASTER_KEYS }}
+#Environment=RAILS_MASTER_KEY=
 
 # SystemD will not run puma even if it is in your path. You must specify
 # an absolute URL to puma. For example /usr/local/bin/puma
 # Alternatively, create a binstub with `bundle binstubs puma --path ./sbin` in the WorkingDirectory
-#ExecStart=/<FULLPATH>/bin/puma -C <YOUR_APP_PATH>/puma.rb
-ExecStart=/bin/bash -lc '/opt/rubies/ruby-{{ruby_version }}/bin/bundle exec --keep-file-descriptors puma -e {{ app_env }} -C {{ deploy_dir }}{{ deploy_app_name }}/config/puma.rb'
-#ExecStop= {{ deploy_dir }}.gem/ruby/{{ruby_version }}/bin/bundle exec puma -e production -S {{ deploy_dir }}{{ deploy_app_name }}/config/puma.rb
-#PIDFile={{deploy_dir}}{{deploy_app_name}}/puma.pid
+
+ExecStart=/bin/bash -lc '/home/cryo/.rbenv/versions/2.6.6/bin/bundle exec --keep-file-descriptors puma -e validation -C /home/cryo/current/config/puma.rb'
+
 PIDFile=/home/cryo/current/puma.pid
-
-# Variant: Rails start.
-# ExecStart=/<FULLPATH>/bin/puma -C <YOUR_APP_PATH>/config/puma.rb ../config.ru
-
-# Variant: Use `bundle exec --keep-file-descriptors puma` instead of binstub
-# Variant: Specify directives inline.
-# ExecStart=/<FULLPATH>/puma -b tcp://0.0.0.0:9292 -b ssl://0.0.0.0:9293?key=key.pem&cert=cert.pem
-
 
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
+
+

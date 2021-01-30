@@ -11,21 +11,21 @@
     - name: apt-get update
       raw: sudo apt-get update -qq
   roles:
-    - common
-#    - deploy-user
-#    - mysql
-    - nginx
-#    - certbot
-    - rbenv
-    - role: ansible-role-nodejs
-      nvm:
-       user: cryo
-       version: v0.33.11
-       node_version: '12.13.1'
-    - rails
-    - monit
-    - memcached
-    - redis
-#    - elasticsearch
-#    - cloudwatch       
-    - sidekiq
+#     - common
+# #    - deploy-user
+# #    - mysql
+      - nginx
+# #    - certbot
+#     - rbenv
+      # - role: ansible-role-nodejs
+      #   nvm:
+      #   user: cryo
+      #   version: v0.33.11
+      #   node_version: '12.13.1'
+      - rails
+#     - monit
+#     - memcached
+#     - redis
+# #    - elasticsearch
+# #    - cloudwatch       
+#     - sidekiq

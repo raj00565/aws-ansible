@@ -1,0 +1,14 @@
+Unit]
+Description=puma
+After=syslog.target network.target
+
+
+#EnvironmentFile=/home/cryo/.railsenv
+User=deploy
+WorkingDirectory=/home/cryo/current
+ExecStart=/opt/rubies/ruby-3.0.0/bin/bundle exec puma
+Restart=always
+RestartSec=180
+
+[Install]
+WantedBy=multi-user.target
