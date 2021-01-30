@@ -31,3 +31,4 @@
     - g++ 
     - make
     - curl
+    - openjdk-8-jdk

@@ -12,8 +12,8 @@
       raw: sudo apt-get update -qq
   roles:
     - common
-    - deploy-user
-    - mysql
+#    - deploy-user
+#    - mysql
     - nginx
 #    - certbot
     - rbenv
