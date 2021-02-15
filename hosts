@@ -1,6 +1,6 @@
 [Dev]
-server1 ansible_host=18.236.104.235 ansible_user=ubuntu
-
+#server1 ansible_host=18.236.104.235 ansible_user=ubuntu
+connection: local
 [Prod]
 host11.prod.example.com
 host12.prod.example.com
